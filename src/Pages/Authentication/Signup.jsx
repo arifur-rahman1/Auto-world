@@ -3,7 +3,7 @@ import google from '../../assets/icons/google.png'
 import loginSvg from '../../assets/images/login/login.svg'
 
 
-const Login = () => {
+const Signup = () => {
     return (
         <div>
            
@@ -23,6 +23,10 @@ const Login = () => {
 
       <form className="mt-6" action="#" method="POST">
         <div>
+          <label className="block text-gray-700">Name</label>
+          <input type="text" name="" id="" placeholder="Enter Your name" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"   required/>
+        </div>
+        <div className="mt-4">
           <label className="block text-gray-700">Email Address</label>
           <input type="email" name="" id="" placeholder="Enter Email Address" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"   required/>
         </div>
@@ -53,7 +57,7 @@ const Login = () => {
             </div>
           </button>
 
-          <p className="mt-8">Need an account? <Link to={"/signup"} className="text-blue-500 hover:text-blue-700 font-semibold">Create an
+      <p className="mt-8">Have an account? <Link to={"/login"} className="text-blue-500 hover:text-blue-700 font-semibold">Sign in to your
               account</Link></p>
 
 
@@ -65,4 +69,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Signup;
