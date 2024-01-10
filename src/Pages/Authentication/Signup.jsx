@@ -1,9 +1,28 @@
 import { Link } from 'react-router-dom';
 import google from '../../assets/icons/google.png'
 import loginSvg from '../../assets/images/login/login.svg'
+import { useContext } from 'react';
+import { AuthCotext } from '../../Providers/Authprovider';
 
 
 const Signup = () => {
+    const {createUser}=useContext(AuthCotext)
+
+    const handleSignup=(event)=>{
+        event.preventDefault();
+        const form =event.target;
+        const name =form.name.value;
+        const email=form.email.value;
+        const password=form.password.value;
+        console.log(name,email,password);
+        createUser(email,password)
+        .then(result=>{
+            const user=result.user;
+            console.log(user);
+
+        })
+        .catch(error=>console.log(error))
+    }
     return (
         <div>
            
@@ -21,19 +40,19 @@ const Signup = () => {
 
       <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">Log in to your account</h1>
 
-      <form className="mt-6" action="#" method="POST">
+      <form className="mt-6" onSubmit={handleSignup}>
         <div>
           <label className="block text-gray-700">Name</label>
-          <input type="text" name="" id="" placeholder="Enter Your name" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"   required/>
+          <input type="text" name="name"  placeholder="Enter Your name" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"   required/>
         </div>
         <div className="mt-4">
           <label className="block text-gray-700">Email Address</label>
-          <input type="email" name="" id="" placeholder="Enter Email Address" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"   required/>
+          <input type="email" name="email"  placeholder="Enter Email Address" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"   required/>
         </div>
 
         <div className="mt-4">
           <label className="block text-gray-700">Password</label>
-          <input type="password" name="" id="" placeholder="Enter Password" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+          <input type="password" name="password"  placeholder="Enter Password" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none" required/>
         </div>
 
